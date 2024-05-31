@@ -12,6 +12,7 @@ echo "==================================="
 echo ""
 
 if [ "${DISTRO}" = "ubuntu" ]; then
+   export DEBIAN_FRONTEND=noninteractive
    sudo chown -Rv _apt:root /var/cache/apt/archives/partial/
    sudo chmod -Rv 700 /var/cache/apt/archives/partial/
 
@@ -19,7 +20,7 @@ if [ "${DISTRO}" = "ubuntu" ]; then
    # Make sure we have a default compiler for the system -- gcc, g++, gfortran
    sudo apt-get update && \
    sudo apt-get dist-upgrade -y && \
-   sudo apt-get install -y build-essential cmake libnuma1 wget gnupg2 m4 bash-completion git-core autoconf libtool autotools-dev \
+   sudo apt-get install -y apt-utils build-essential cmake libnuma1 wget gnupg2 m4 bash-completion git-core autoconf libtool autotools-dev \
       python3-pip lsb-release libpapi-dev libpfm4-dev libudev1 rpm librpm-dev curl apt-utils vim tmux rsync sudo \
       bison flex texinfo  libnuma-dev pkg-config  libibverbs-dev  rdmacm-utils ssh locales \
       python3-dev python3-venv \
